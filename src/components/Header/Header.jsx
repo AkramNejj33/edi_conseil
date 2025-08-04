@@ -1,33 +1,74 @@
-import React from "react";
-
+import React, { useRef, useEffect } from "react";
+import { Link, useLocation } from "react-router-dom";
 import "./header.css";
 
 const nav__links = [
   {
-    path: "#home",
-    display: "Home",
+    path: "#accueil",
+    display: "Accueil",
   },
   {
-    path: "#about",
-    display: "About",
+    path: "#services",
+    display: "Services",
   },
   {
-    path: "#service",
-    display: "Service",
+    path: "#apropos",
+    display: "À propos",
   },
   {
-    path: "#projects",
-    display: "Projects",
+    path: "#contact",
+    display: "Contact",
   },
   {
-    path: "#blog",
-    display: "Blog",
+    path: "/rendez-vous",
+    display: "Rendez-vous",
   },
 ];
 
-const Header = () => {
+const Header = ({ theme, toggleTheme }) => {
+  const headerRef = useRef(null);
+  const location = useLocation();
+
+  const headerFunc = () => {
+    if (
+      document.body.scrollTop > 80 ||
+      document.documentElement.scrollTop > 80
+    ) {
+      headerRef.current.classList.add("header__shrink");
+    } else {
+      headerRef.current.classList.remove("header__shrink");
+    }
+  };
+
+  useEffect(() => {
+    window.addEventListener("scroll", headerFunc);
+    return () => window.removeEventListener("scroll", headerFunc);
+  }, []);
+
+  const handleClick = (e, path) => {
+    e.preventDefault();
+
+    if (!path || !path.startsWith("#")) return;
+
+    // Si on est sur la page d'accueil, scroll normal
+    if (location.pathname === "/" || location.pathname === "") {
+      const targetElement = document.querySelector(path);
+      if (targetElement) {
+        const targetLocation = targetElement.offsetTop;
+        window.scrollTo({
+          left: 0,
+          top: targetLocation - 80,
+          behavior: 'smooth'
+        });
+      }
+    } else {
+      // Si on est sur une autre page, redirection complète
+      window.location.href = `/${path}`;
+    }
+  };
+
   return (
-    <header className="header">
+    <header className="header" ref={headerRef}>
       <div className="container">
         <div className="nav__wrapper">
           <div className="logo">
@@ -35,14 +76,23 @@ const Header = () => {
           </div>
 
           {/* --------- navigation --------- */}
-
           <div className="navigation">
             <ul className="menu">
               {nav__links.map((item, index) => (
-                <li className="menu__item">
-                  <a href={item.path} className="menu__link">
-                    {item.display}
-                  </a>
+                <li className="menu__item" key={index}>
+                  {item.path.startsWith("#") ? (
+                    <a
+                      href={`/${item.path}`}
+                      onClick={(e) => handleClick(e, item.path)}
+                      className="menu__link"
+                    >
+                      {item.display}
+                    </a>
+                  ) : (
+                    <Link to={item.path} className="menu__link">
+                      {item.display}
+                    </Link>
+                  )}
                 </li>
               ))}
             </ul>
@@ -50,11 +100,18 @@ const Header = () => {
 
           {/* --------- light mode --------- */}
           <div className="light__mode">
-            <span>
-              <i class="ri-sun-line"></i>Light Mode
+            <span onClick={toggleTheme}>
+              {theme === "light-theme" ? (
+                <span>
+                  <i className="ri-moon-line"></i>Dark
+                </span>
+              ) : (
+                <span>
+                  <i className="ri-sun-line"></i>Light
+                </span>
+              )}
             </span>
           </div>
-
         </div>
       </div>
     </header>

@@ -31,7 +31,7 @@ const Contact = () => {
   };
 
   return (
-    <section className="contact-section">
+    <section id='contact'  className="contact-section">
       <div className="container">
         {/* Section Carte */}
         <div className="map-section">

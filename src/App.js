@@ -1,31 +1,38 @@
-import "./App.css";
-import Header from "./components/Header/Header";
-import Hero from "./components/UI/Hero";
-import Counter from "./components/UI/Counter";
-import Services from "./components/UI/Services";
-import About from "./components/UI/About";
-import Team from "./components/UI/Team";
-import Testimonial from "./components/UI/Testimonial";
-import Newsletter from "./components/UI/Newsletter";
-import Contact from "./components/UI/Contact";
-import Footer from "./components/Footer/Footer";
+import React, { useState, useEffect } from "react";
+import { Routes, Route } from "react-router-dom";
 
+import "./Home.css";
+
+import Header from "./components/Header/Header";
+import Footer from "./components/Footer/Footer";
+import Newsletter from "./components/UI/Newsletter";
+
+
+// Pages
+import Home from "./Home";
+import AppointmentPage from "./pages/AppointmentPage";
 
 function App() {
+  const [theme, setTheme] = useState("");
+
+  const toggleTheme = () => {
+    theme === "" ? setTheme("light-theme") : setTheme("");
+  };
+
+  useEffect(() => {
+    document.body.className = theme;
+  }, [theme]);
+
   return (
     <>
-      <Header />
-      <Hero />
-      <Counter />
-      <Services />
-      <About />
-      <Team />
-      <Testimonial />
-      <Contact />
+      <Header theme={theme} toggleTheme={toggleTheme} />
+
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/rendez-vous" element={<AppointmentPage />} />
+      </Routes>
       <Newsletter />
       <Footer />
-
-      
     </>
   );
 }

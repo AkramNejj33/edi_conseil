@@ -8,6 +8,12 @@
     width: 50%;
 }
 
+.hero__img img{
+    width: 100%;
+}
+
+
+
 .hero__content h2{
     font-size: 3rem ;
     line-height: 65px; 

@@ -1,5 +1,5 @@
 import React from "react";
-import "../../styles/footer.css";
+import "./footer.css";
 
 const quickLinks01 = [
   {

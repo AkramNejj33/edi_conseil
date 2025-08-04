@@ -26,7 +26,7 @@ const serviceData = [
 
 export const Services = () => {
   return (
-    <section id="service">
+    <section id="services">
       <div className="container">
         <div className="service__top-content">
           <h6 className="subtitle">Our Services</h6>

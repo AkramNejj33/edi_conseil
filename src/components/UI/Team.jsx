@@ -5,7 +5,7 @@ import team01 from "../../images/ceo.png";
 
 const Team = () => {
   return (
-    <section>
+    <section id="apropos">
       <div className="container">
         <div className="team__content">
           <h6 className="subtitle">À propos du consultant</h6>

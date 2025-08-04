@@ -1,0 +1,844 @@
+/* ================================
+   APPOINTMENT PAGE STYLES
+   Adapté au CSS global du projet
+   ================================ */
+
+/* Main appointment section container */
+.appointment-section {
+  padding: 80px 0;
+  min-height: 100vh;
+  background: var(--body-bg);
+}
+
+/* Header section with title and description */
+.appointment-header {
+  text-align: center;
+  margin-bottom: 60px;
+}
+
+.appointment-header h1 {
+  font-size: 3rem;
+  margin-bottom: 20px;
+  background: var(--counter-color);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-weight: 700;
+}
+
+.appointment-header .description {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  color: var(--small-text-color);
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* ================================
+   PROGRESS INDICATOR STYLES
+   ================================ */
+
+.progress-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 60px;
+}
+
+.progress-steps {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.progress-step {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: var(--icon-bg);
+  color: var(--small-text-color);
+  font-weight: 600;
+  font-size: 1.1rem;
+  transition: all 0.3s ease;
+  border: 2px solid var(--icon-bg);
+}
+
+.progress-step-active {
+  background: var(--primary-color);
+  color: white;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 20px rgba(55, 156, 246, 0.4);
+  transform: scale(1.1);
+}
+
+.progress-line {
+  width: 60px;
+  height: 3px;
+  background: var(--icon-bg);
+  border-radius: 2px;
+  transition: all 0.3s ease;
+}
+
+.progress-line-active {
+  background: var(--primary-color);
+  box-shadow: 0 0 10px rgba(55, 156, 246, 0.3);
+}
+
+/* ================================
+   MAIN CONTENT LAYOUT
+   ================================ */
+
+.appointment-content {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 40px;
+  align-items: start;
+}
+
+/* ================================
+   CARD COMPONENTS
+   ================================ */
+
+.appointment-card {
+  background: var(--card-bg);
+  border-radius: 20px;
+  padding: 30px;
+  margin-bottom: 30px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+  transition: all 0.3s ease;
+}
+
+.appointment-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+}
+
+.card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 30px;
+}
+
+.card-header h2 {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  color: var(--heading-color);
+  font-size: 1.8rem;
+  font-weight: 600;
+}
+
+.card-header h2 svg {
+  color: var(--primary-color);
+}
+
+.timezone {
+  font-size: 0.9rem;
+  color: var(--small-text-color);
+  opacity: 0.8;
+}
+
+/* ================================
+   CALENDAR NAVIGATION
+   ================================ */
+
+.calendar-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 30px;
+}
+
+.nav-btn {
+  width: 40px;
+  height: 40px;
+  border: none;
+  background: var(--icon-bg);
+  color: var(--heading-color);
+  border-radius: 10px;
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.nav-btn:hover {
+  background: var(--primary-color);
+  color: white;
+  transform: scale(1.1);
+}
+
+.month-title {
+  color: var(--heading-color);
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+/* ================================
+   CALENDAR GRID SYSTEM
+   ================================ */
+
+.calendar-header {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 8px;
+  margin-bottom: 15px;
+}
+
+.day-header {
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--small-text-color);
+}
+
+.calendar-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 8px;
+  margin-bottom: 20px;
+}
+
+.calendar-day-empty {
+  height: 50px;
+}
+
+.calendar-day {
+  height: 50px;
+  border: none;
+  border-radius: 12px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.calendar-day-available {
+  background: var(--icon-bg);
+  color: var(--heading-color);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.calendar-day-available:hover {
+  background: var(--primary-color);
+  color: white;
+  transform: scale(1.05);
+}
+
+.calendar-day-selected {
+  background: var(--primary-color);
+  color: white;
+  box-shadow: 0 5px 20px rgba(55, 156, 246, 0.4);
+  transform: scale(1.1);
+  border: 2px solid var(--primary-color);
+}
+
+.calendar-day-disabled {
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--small-text-color);
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* ================================
+   CALENDAR LEGEND
+   ================================ */
+
+.calendar-legend {
+  display: flex;
+  gap: 20px;
+  font-size: 0.9rem;
+  color: var(--small-text-color);
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.legend-color {
+  width: 16px;
+  height: 16px;
+  border-radius: 4px;
+}
+
+.legend-available {
+  background: var(--primary-color);
+}
+
+.legend-unavailable {
+  background: var(--icon-bg);
+}
+
+/* ================================
+   TIME SLOTS SECTION
+   ================================ */
+
+.timeslots-card {
+  margin-top: 0;
+}
+
+.timeslots-title {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  color: var(--heading-color);
+  font-size: 1.3rem;
+  font-weight: 600;
+  margin-bottom: 25px;
+}
+
+.timeslots-title svg {
+  color: var(--primary-color);
+}
+
+.timeslots-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 15px;
+}
+
+.timeslot {
+  padding: 20px 15px;
+  background: var(--icon-bg);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 12px;
+  color: var(--heading-color);
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-align: center;
+}
+
+.timeslot:hover {
+  background: var(--primary-color);
+  color: white;
+  transform: translateY(-2px);
+}
+
+.timeslot-selected {
+  background: var(--primary-color);
+  color: white;
+  box-shadow: 0 5px 20px rgba(55, 156, 246, 0.4);
+  transform: scale(1.05);
+}
+
+.timeslot-time {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-bottom: 5px;
+}
+
+.timeslot-duration {
+  font-size: 0.8rem;
+  opacity: 0.8;
+}
+
+/* ================================
+   FORM SECTION
+   ================================ */
+
+.form-section {
+  position: sticky;
+  top: 100px;
+}
+
+.form-card {
+  margin-bottom: 0;
+}
+
+.form-card h3 {
+  color: var(--heading-color);
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 30px;
+}
+
+.form-group {
+  margin-bottom: 25px;
+}
+
+.form-label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--heading-color);
+  margin-bottom: 10px;
+}
+
+.form-label svg {
+  color: var(--primary-color);
+}
+
+.form-input,
+.form-textarea {
+  width: 100%;
+  padding: 15px;
+  background: var(--icon-bg);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 10px;
+  color: var(--heading-color);
+  font-size: 0.9rem;
+  transition: all 0.3s ease;
+}
+
+.form-input::placeholder,
+.form-textarea::placeholder {
+  color: var(--small-text-color);
+  opacity: 0.7;
+}
+
+.form-input:focus,
+.form-textarea:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 3px rgba(55, 156, 246, 0.1);
+}
+
+.form-textarea {
+  resize: none;
+  min-height: 100px;
+}
+
+.character-count {
+  font-size: 0.8rem;
+  color: var(--small-text-color);
+  margin-top: 5px;
+  text-align: right;
+}
+
+/* ================================
+   CONSULTATION TYPE SELECTION
+   ================================ */
+
+.consultation-types {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.consultation-type {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  padding: 15px;
+  border-radius: 10px;
+  transition: all 0.3s ease;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: var(--icon-bg);
+}
+
+.consultation-type:hover {
+  border-color: var(--primary-color);
+}
+
+.consultation-type input[type="radio"] {
+  margin-right: 15px;
+  accent-color: var(--primary-color);
+}
+
+.consultation-option {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: var(--heading-color);
+  font-weight: 500;
+}
+
+.consultation-option svg {
+  color: var(--primary-color);
+}
+
+/* ================================
+   BUTTONS
+   ================================ */
+
+.btn-primary {
+  background: var(--btn-primary-bg);
+  color: var(--heading-color);
+  border: none;
+  padding: 15px 30px;
+  border-radius: 10px;
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  display: inline-block;
+  text-align: center;
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 30px rgba(55, 156, 246, 0.4);
+  opacity: 0.9;
+}
+
+.submit-btn {
+  width: 100%;
+  padding: 18px;
+  font-size: 1.1rem;
+  margin-top: 10px;
+}
+
+/* ================================
+   APPOINTMENT SUMMARY
+   ================================ */
+
+.appointment-summary {
+  margin-top: 30px;
+  padding: 20px;
+  background: var(--icon-bg);
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.appointment-summary h4 {
+  color: var(--heading-color);
+  font-weight: 600;
+  margin-bottom: 15px;
+}
+
+.summary-details {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.summary-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.summary-label {
+  color: var(--small-text-color);
+  font-size: 0.9rem;
+}
+
+.summary-value {
+  color: var(--heading-color);
+  font-weight: 500;
+}
+
+/* ================================
+   APPOINTMENT POLICY
+   ================================ */
+
+.appointment-policy {
+  margin-top: 20px;
+  padding-top: 20px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.appointment-policy p {
+  color: var(--small-text-color);
+  font-size: 0.8rem;
+  margin-bottom: 8px;
+  line-height: 1.4;
+}
+
+.appointment-policy strong {
+  color: var(--heading-color);
+}
+
+/* ================================
+   CONFIRMATION PAGE STYLES
+   ================================ */
+
+.confirmation-container {
+  max-width: 600px;
+  margin: 0 auto;
+  text-align: center;
+  padding: 40px;
+}
+
+.confirmation-icon {
+  width: 80px;
+  height: 80px;
+  margin: 0 auto 30px;
+  background: var(--primary-color);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  box-shadow: 0 10px 30px rgba(55, 156, 246, 0.3);
+}
+
+.confirmation-title {
+  color: var(--heading-color);
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+  font-weight: 700;
+}
+
+.confirmation-description {
+  color: var(--small-text-color);
+  font-size: 1.1rem;
+  line-height: 1.6;
+  margin-bottom: 40px;
+}
+
+.confirmation-details {
+  background: var(--card-bg);
+  border-radius: 15px;
+  padding: 30px;
+  margin: 30px 0;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  text-align: left;
+}
+
+.details-title {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--heading-color);
+  font-size: 1.3rem;
+  font-weight: 600;
+  margin-bottom: 20px;
+}
+
+.details-title svg {
+  color: var(--primary-color);
+}
+
+.details-list {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.detail-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.detail-item:last-child {
+  border-bottom: none;
+}
+
+.detail-label {
+  color: var(--small-text-color);
+  font-weight: 500;
+}
+
+.detail-value {
+  color: var(--heading-color);
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.detail-value svg {
+  color: var(--primary-color);
+}
+
+.confirmation-email {
+  background: rgba(55, 156, 246, 0.1);
+  border: 1px solid rgba(55, 156, 246, 0.3);
+  border-radius: 10px;
+  padding: 20px;
+  margin: 30px 0;
+}
+
+.confirmation-email p {
+  color: var(--small-text-color);
+  margin-bottom: 10px;
+  line-height: 1.5;
+}
+
+.confirmation-email p:last-child {
+  margin-bottom: 0;
+}
+
+.confirmation-email strong {
+  color: var(--heading-color);
+}
+
+.confirmation-btn {
+  margin-top: 30px;
+  padding: 15px 40px;
+  font-size: 1.1rem;
+}
+
+/* ================================
+   LIGHT THEME ADAPTATIONS
+   ================================ */
+
+.light-theme .appointment-card {
+  background: var(--card-bg);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+}
+
+.light-theme .appointment-card:hover {
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+}
+
+.light-theme .form-input,
+.light-theme .form-textarea {
+  background: rgba(0, 0, 0, 0.05);
+  border: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+.light-theme .form-input:focus,
+.light-theme .form-textarea:focus {
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 3px rgba(129, 106, 255, 0.1);
+}
+
+.light-theme .calendar-day-available,
+.light-theme .timeslot,
+.light-theme .nav-btn {
+  background: rgba(0, 0, 0, 0.05);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.light-theme .calendar-day-available:hover,
+.light-theme .timeslot:hover,
+.light-theme .nav-btn:hover {
+  background: var(--primary-color);
+  color: white;
+}
+
+.light-theme .consultation-type {
+  background: rgba(0, 0, 0, 0.03);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.light-theme .consultation-type:hover {
+  border-color: var(--primary-color);
+}
+
+.light-theme .appointment-summary {
+  background: rgba(0, 0, 0, 0.05);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.light-theme .appointment-policy {
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.light-theme .detail-item {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.light-theme .progress-step {
+  background: rgba(0, 0, 0, 0.05);
+  border-color: rgba(0, 0, 0, 0.1);
+}
+
+.light-theme .progress-line {
+  background: rgba(0, 0, 0, 0.1);
+}
+
+.light-theme .legend-unavailable {
+  background: rgba(0, 0, 0, 0.1);
+}
+
+/* ================================
+   RESPONSIVE DESIGN
+   ================================ */
+
+@media (max-width: 768px) {
+  .appointment-content {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+  
+  .form-section {
+    position: static;
+  }
+  
+  .appointment-header h1 {
+    font-size: 2.5rem;
+  }
+  
+  .timeslots-grid {
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+  }
+  
+  .progress-steps {
+    gap: 15px;
+  }
+  
+  .progress-line {
+    width: 40px;
+  }
+}
+
+@media (max-width: 480px) {
+  .appointment-section {
+    padding: 40px 0;
+  }
+  
+  .appointment-card {
+    padding: 20px;
+    margin-bottom: 20px;
+  }
+  
+  .appointment-header h1 {
+    font-size: 2rem;
+  }
+  
+  .calendar-grid,
+  .calendar-header {
+    gap: 4px;
+  }
+  
+  .calendar-day {
+    height: 40px;
+    font-size: 0.8rem;
+  }
+  
+  .timeslots-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+  }
+  
+  .timeslot {
+    padding: 15px 10px;
+  }
+  
+  .progress-steps {
+    gap: 10px;
+  }
+  
+  .progress-step {
+    width: 40px;
+    height: 40px;
+    font-size: 1rem;
+  }
+  
+  .progress-line {
+    width: 30px;
+  }
+  
+  .confirmation-container {
+    padding: 20px;
+  }
+  
+  .confirmation-title {
+    font-size: 2rem;
+  }
+}
