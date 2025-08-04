@@ -1,69 +1,139 @@
 import React, { useState } from 'react';
 import { Calendar, Clock, Video, Phone, User, Mail, Building, MessageSquare, Check } from 'lucide-react';
+
 import '../../styles/appointment.css';
 
 const Appointment = () => {
-  const [selectedDate, setSelectedDate] = useState('');
-  const [selectedTime, setSelectedTime] = useState('');
-  const [consultationType, setConsultationType] = useState('video');
-  const [currentStep, setCurrentStep] = useState(1);
+  // ============ ÉTATS DE GESTION DU COMPOSANT ============
+  
+  // États pour la sélection de date et heure
+  const [selectedDate, setSelectedDate] = useState(''); // Date sélectionnée (format YYYY-MM-DD)
+  const [selectedTime, setSelectedTime] = useState(''); // Heure sélectionnée
+  const [consultationType, setConsultationType] = useState('video'); // Type : 'video' ou 'phone'
+  const [currentStep, setCurrentStep] = useState(1); // Étape actuelle (1, 2, ou 3)
+  
+  // État pour les données du formulaire - C'EST ICI QUE SONT STOCKÉES LES INFOS CLIENT
   const [formData, setFormData] = useState({
-    fullName: '',
-    email: '',
-    phone: '',
-    company: '',
-    requirements: ''
+    fullName: '',     // Nom complet du client
+    email: '',        // Email du client
+    phone: '',        // Téléphone du client
+    company: '',      // Entreprise (optionnel)
+    requirements: ''  // Besoins EDI (optionnel)
   });
+  
+  // État pour afficher la page de confirmation
   const [showConfirmation, setShowConfirmation] = useState(false);
 
+  // ============ GESTION DU CALENDRIER ============
+  
+  // États pour la navigation dans le calendrier
   const currentMonth = new Date().getMonth();
   const currentYear = new Date().getFullYear();
-  const [viewMonth, setViewMonth] = useState(currentMonth);
-  const [viewYear, setViewYear] = useState(currentYear);
+  const [viewMonth, setViewMonth] = useState(currentMonth); // Mois affiché dans le calendrier
+  const [viewYear, setViewYear] = useState(currentYear); // Année affichée dans le calendrier
 
+  // Noms des mois en français pour l'affichage
   const monthNames = [
     'Janvier', 'Février', 'Mars', 'Avril', 'Mai', 'Juin',
     'Juillet', 'Août', 'Septembre', 'Octobre', 'Novembre', 'Décembre'
   ];
 
+  // Créneaux horaires disponibles - VOUS POUVEZ MODIFIER CES HORAIRES
   const timeSlots = [
     '09:00', '09:30', '10:00', '10:30', '11:00', '11:30',
     '14:00', '14:30', '15:00', '15:30', '16:00', '16:30'
   ];
 
+  // ============ FONCTIONS UTILITAIRES POUR LE CALENDRIER ============
+  
+  // Obtient le nombre de jours dans un mois donné
   const getDaysInMonth = (month, year) => {
     return new Date(year, month + 1, 0).getDate();
   };
 
+  // Obtient le premier jour du mois (0 = dimanche, 1 = lundi, etc.)
   const getFirstDayOfMonth = (month, year) => {
     return new Date(year, month, 1).getDay();
   };
 
+  // Vérifie si une date est disponible pour réservation
+  // RÈGLES ACTUELLES : pas de weekend, pas de dates passées
   const isDateAvailable = (date) => {
     const today = new Date();
     const checkDate = new Date(viewYear, viewMonth, date);
+    // Disponible si : date >= aujourd'hui ET pas weekend (dimanche=0, samedi=6)
     return checkDate >= today && checkDate.getDay() !== 0 && checkDate.getDay() !== 6;
   };
 
+  // ============ GESTIONNAIRES D'ÉVÉNEMENTS ============
+  
+  // Gère la sélection d'une date dans le calendrier
   const handleDateSelect = (date) => {
     if (isDateAvailable(date)) {
+      // Formate la date au format YYYY-MM-DD pour le stockage
       const dateStr = `${viewYear}-${String(viewMonth + 1).padStart(2, '0')}-${String(date).padStart(2, '0')}`;
       setSelectedDate(dateStr);
-      setCurrentStep(2);
+      setCurrentStep(2); // Passe à l'étape 2 (sélection de l'heure)
     }
   };
 
+  // Gère la sélection d'un créneau horaire
   const handleTimeSelect = (time) => {
     setSelectedTime(time);
-    setCurrentStep(3);
+    setCurrentStep(3); // Passe à l'étape 3 (formulaire de contact)
   };
 
+  // Gère la soumission du formulaire - POINT CRITIQUE POUR LA SAUVEGARDE
   const handleFormSubmit = () => {
+    // Vérifie que les champs obligatoires sont remplis
     if (formData.fullName && formData.email && formData.phone) {
+      
+      // ⚠️⚠️⚠️ POINT IMPORTANT : ICI IL FAUDRAIT SAUVEGARDER LES DONNÉES ⚠️⚠️⚠️
+      // Actuellement, les données ne sont que dans l'état React local !
+      // 
+      // TOUTES LES DONNÉES DU RENDEZ-VOUS SONT DISPONIBLES ICI :
+      const appointmentData = {
+        // Informations du rendez-vous
+        date: selectedDate,                    // Ex: "2024-08-15"
+        time: selectedTime,                    // Ex: "14:30"
+        consultationType: consultationType,    // "video" ou "phone"
+        
+        // Informations du client
+        fullName: formData.fullName,
+        email: formData.email,
+        phone: formData.phone,
+        company: formData.company,
+        requirements: formData.requirements
+      };
+      
+      // EXEMPLE D'APPEL API À AJOUTER :
+      /*
+      fetch('/api/appointments', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(appointmentData)
+      })
+      .then(response => response.json())
+      .then(data => {
+        console.log('Rendez-vous sauvegardé:', data);
+        setShowConfirmation(true);
+      })
+      .catch(error => {
+        console.error('Erreur lors de la sauvegarde:', error);
+        // Gérer l'erreur (afficher un message à l'utilisateur)
+      });
+      */
+      
+      // Pour l'instant, on affiche juste la confirmation
       setShowConfirmation(true);
     }
   };
 
+  // ============ FONCTIONS D'AFFICHAGE ============
+  
+  // Formate la date sélectionnée pour un affichage convivial
   const formatSelectedDate = () => {
     if (!selectedDate) return '';
     const date = new Date(selectedDate);
@@ -75,18 +145,21 @@ const Appointment = () => {
     });
   };
 
+  // Génère la grille du calendrier avec tous les jours du mois
   const renderCalendar = () => {
     const daysInMonth = getDaysInMonth(viewMonth, viewYear);
     const firstDay = getFirstDayOfMonth(viewMonth, viewYear);
     const days = [];
 
-    // Ajuster pour que lundi soit le premier jour
+    // Ajuste pour que lundi soit le premier jour (au lieu de dimanche)
     const adjustedFirstDay = firstDay === 0 ? 6 : firstDay - 1;
 
+    // Ajoute des cellules vides pour les jours du mois précédent
     for (let i = 0; i < adjustedFirstDay; i++) {
       days.push(<div key={`empty-${i}`} className="calendar-day-empty"></div>);
     }
 
+    // Ajoute tous les jours du mois courant
     for (let date = 1; date <= daysInMonth; date++) {
       const isAvailable = isDateAvailable(date);
       const isSelected = selectedDate === `${viewYear}-${String(viewMonth + 1).padStart(2, '0')}-${String(date).padStart(2, '0')}`;
@@ -112,20 +185,26 @@ const Appointment = () => {
     return days;
   };
 
+  // ============ AFFICHAGE DE LA PAGE DE CONFIRMATION ============
+  // Cette page s'affiche après la soumission du formulaire
+  
   if (showConfirmation) {
     return (
       <section className="appointment-section">
         <div className="container">
           <div className="confirmation-container">
+            {/* Icône de succès */}
             <div className="confirmation-icon">
               <Check size={40} />
             </div>
             
+            {/* Titre de confirmation */}
             <h1 className="confirmation-title">Rendez-vous confirmé !</h1>
             <p className="confirmation-description">
               Votre consultation EDI a été planifiée avec succès. Vous recevrez bientôt un email de confirmation avec tous les détails.
             </p>
             
+            {/* Récapitulatif des détails du rendez-vous */}
             <div className="confirmation-details">
               <h3 className="details-title">
                 <Calendar size={20} />
@@ -154,11 +233,13 @@ const Appointment = () => {
               </div>
             </div>
 
+            {/* Information sur l'email de confirmation */}
             <div className="confirmation-email">
               <p>Un email de confirmation a été envoyé à <strong>{formData.email}</strong></p>
               <p>Vous recevrez le lien de connexion 1 heure avant le rendez-vous.</p>
             </div>
 
+            {/* Bouton de retour à l'accueil */}
             <button 
               onClick={() => window.location.href = '/'}
               className="btn-primary confirmation-btn"
@@ -171,10 +252,13 @@ const Appointment = () => {
     );
   }
 
+  // ============ AFFICHAGE PRINCIPAL DE L'INTERFACE DE RÉSERVATION ============
+  
   return (
     <section className="appointment-section">
       <div className="container">
-        {/* Title */}
+        
+        {/* ============ EN-TÊTE DE LA PAGE ============ */}
         <div className="appointment-header">
           <h1>Planifier votre consultation EDI</h1>
           <p className="description">
@@ -182,7 +266,7 @@ const Appointment = () => {
           </p>
         </div>
 
-        {/* Progress Indicator */}
+        {/* ============ INDICATEUR DE PROGRESSION (3 ÉTAPES) ============ */}
         <div className="progress-container">
           <div className="progress-steps">
             {[1, 2, 3].map((step, index) => (
@@ -199,8 +283,11 @@ const Appointment = () => {
         </div>
 
         <div className="appointment-content">
-          {/* Calendar Section */}
+          
+          {/* ============ SECTION CALENDRIER (COLONNE GAUCHE) ============ */}
           <div className="calendar-section">
+            
+            {/* Carte principale du calendrier */}
             <div className="appointment-card">
               <div className="card-header">
                 <h2>
@@ -212,7 +299,7 @@ const Appointment = () => {
                 </div>
               </div>
 
-              {/* Calendar Navigation */}
+              {/* Navigation entre les mois */}
               <div className="calendar-nav">
                 <button
                   onClick={() => {
@@ -245,16 +332,19 @@ const Appointment = () => {
                 </button>
               </div>
 
-              {/* Calendar Grid */}
+              {/* En-têtes des jours de la semaine */}
               <div className="calendar-header">
                 {['Lun', 'Mar', 'Mer', 'Jeu', 'Ven', 'Sam', 'Dim'].map((day) => (
                   <div key={day} className="day-header">{day}</div>
                 ))}
               </div>
+              
+              {/* Grille du calendrier avec tous les jours */}
               <div className="calendar-grid">
                 {renderCalendar()}
               </div>
 
+              {/* Légende pour expliquer les couleurs */}
               <div className="calendar-legend">
                 <div className="legend-item">
                   <div className="legend-color legend-available"></div>
@@ -267,7 +357,8 @@ const Appointment = () => {
               </div>
             </div>
 
-            {/* Time Slots */}
+            {/* ============ SECTION CRÉNEAUX HORAIRES (ÉTAPE 2) ============ */}
+            {/* Cette section n'apparaît que si une date est sélectionnée */}
             {selectedDate && (
               <div className="appointment-card timeslots-card">
                 <h3 className="timeslots-title">
@@ -290,15 +381,16 @@ const Appointment = () => {
             )}
           </div>
 
-          {/* Booking Form */}
+          {/* ============ SECTION FORMULAIRE (COLONNE DROITE) ============ */}
           <div className="form-section">
             <div className="appointment-card form-card">
               <h3>Détails de la consultation</h3>
 
-              {/* Consultation Type */}
+              {/* ============ CHOIX DU TYPE DE CONSULTATION ============ */}
               <div className="form-group">
                 <label className="form-label">Type de consultation</label>
                 <div className="consultation-types">
+                  {/* Option Visioconférence */}
                   <label className="consultation-type">
                     <input
                       type="radio"
@@ -312,6 +404,7 @@ const Appointment = () => {
                       <span>Visioconférence</span>
                     </div>
                   </label>
+                  {/* Option Téléphone */}
                   <label className="consultation-type">
                     <input
                       type="radio"
@@ -328,9 +421,12 @@ const Appointment = () => {
                 </div>
               </div>
 
-              {/* Contact Form */}
+              {/* ============ FORMULAIRE DE CONTACT (ÉTAPE 3) ============ */}
+              {/* Ce formulaire n'apparaît qu'à l'étape 3 (après sélection date + heure) */}
               {currentStep >= 3 && (
                 <div className="contact-form">
+                  
+                  {/* Champ Nom complet (OBLIGATOIRE) */}
                   <div className="form-group">
                     <label className="form-label">
                       <User size={16} />
@@ -346,6 +442,7 @@ const Appointment = () => {
                     />
                   </div>
 
+                  {/* Champ Email (OBLIGATOIRE) */}
                   <div className="form-group">
                     <label className="form-label">
                       <Mail size={16} />
@@ -361,6 +458,7 @@ const Appointment = () => {
                     />
                   </div>
 
+                  {/* Champ Téléphone (OBLIGATOIRE) */}
                   <div className="form-group">
                     <label className="form-label">
                       <Phone size={16} />
@@ -376,6 +474,7 @@ const Appointment = () => {
                     />
                   </div>
 
+                  {/* Champ Entreprise (OPTIONNEL) */}
                   <div className="form-group">
                     <label className="form-label">
                       <Building size={16} />
@@ -390,6 +489,7 @@ const Appointment = () => {
                     />
                   </div>
 
+                  {/* Champ Besoins EDI (OPTIONNEL) */}
                   <div className="form-group">
                     <label className="form-label">
                       <MessageSquare size={16} />
@@ -408,6 +508,7 @@ const Appointment = () => {
                     </div>
                   </div>
 
+                  {/* Bouton de soumission du formulaire */}
                   <button
                     type="button"
                     onClick={handleFormSubmit}
@@ -418,7 +519,8 @@ const Appointment = () => {
                 </div>
               )}
 
-              {/* Summary */}
+              {/* ============ RÉCAPITULATIF DU RENDEZ-VOUS ============ */}
+              {/* Affiché dès qu'une date et heure sont sélectionnées */}
               {selectedDate && selectedTime && (
                 <div className="appointment-summary">
                   <h4>Récapitulatif</h4>
@@ -445,7 +547,7 @@ const Appointment = () => {
                 </div>
               )}
 
-              {/* Policy */}
+              {/* ============ POLITIQUE D'ANNULATION/REPROGRAMMATION ============ */}
               <div className="appointment-policy">
                 <p>
                   <strong>Reprogrammation :</strong> Possible jusqu'à 24h avant le RDV

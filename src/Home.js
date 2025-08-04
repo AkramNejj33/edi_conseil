@@ -6,7 +6,6 @@ import Services from "./components/UI/Services";
 import About from "./components/UI/About";
 import Team from "./components/UI/Team";
 import Testimonial from "./components/UI/Testimonial";
-import Newsletter from "./components/UI/Newsletter";
 import Contact from "./components/UI/Contact";
 
 
@@ -15,7 +14,7 @@ function Home({ theme }) {
 
   return (
     <>
-      <Hero theme={theme} />
+      <Hero theme={theme}/>
       <Counter />
       <Services />
       <About />

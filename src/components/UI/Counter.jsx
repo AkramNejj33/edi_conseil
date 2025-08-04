@@ -4,22 +4,22 @@ import "../../styles/counter.css";
 
 const counterData = [
   {
-    number: "5k",
-    text: "Clients",
+    number: "10+",
+    text: "Années d'expertise",
   },
   {
-    number: 350,
-    text: "Running Projects",
+    number: "30+",
+    text: "Projets EDI réalisés",
   },
   {
-    number: 900,
-    text: "Projects Completed",
+    number: "100%",
+    text: "Clients satisfaits",
   },
 ];
 
 const Counter = () => {
   return (
-    <section className="counter" id="projects">
+    <section className="counter" id="ensavoirplus">
       <div className="container">
         <div className="counter__wrapper">
           {counterData.map((item, index) => (

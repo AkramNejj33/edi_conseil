@@ -5,7 +5,7 @@
  
 .service__item-wrapper{
     display: flex;
-    align-items: center;
+    align-items: stretch;
     justify-content: space-between;
     column-gap: 2rem;
 }
@@ -50,3 +50,11 @@
     margin-bottom: 30px;
 }
 
+.light-theme .service__item{
+    background: var(--card-bg);
+    width: 25%;
+    padding: 30px 15px;
+    text-align: center;
+    border-radius: .5rem;
+    border: 2px solid var(--primary-color);
+}

@@ -28,7 +28,7 @@ function App() {
       <Header theme={theme} toggleTheme={toggleTheme} />
 
       <Routes>
-        <Route path="/" element={<Home />} />
+        <Route path="/" element={<Home theme={theme}/>} />
         <Route path="/rendez-vous" element={<AppointmentPage />} />
       </Routes>
       <Newsletter />

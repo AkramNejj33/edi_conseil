@@ -9,8 +9,6 @@ import ava01 from "../../images/ava-1.jpg";
 import ava02 from "../../images/ava-2.jpg";
 import ava03 from "../../images/ava-3.jpg";
 
-
-
 const Testimonial = () => {
   const settings = {
     dots: false,
@@ -20,17 +18,17 @@ const Testimonial = () => {
     autoplaySpeed: 2000,
     slidesToShow: 1,
     slidesToScroll: 1,
-    swipeToSlide : true ,
+    swipeToSlide: true,
   };
 
   return (
     <section>
       <div className="container">
         <div className="slider_content_top">
-          <h6 className="subtitle">Testimonials</h6>
+          <h6 className="subtitle">Témoignages</h6>
           <h2>
-            Trusted by more than{" "}
-            <span className="highlight">5.000 Customers</span>
+            Ils font confiance à{" "}
+            <span className="highlight">E-D-I CONSEIL</span>
           </h2>
         </div>
 
@@ -38,7 +36,7 @@ const Testimonial = () => {
           <Slider {...settings}>
             <div className="slider__item">
               <p className="description">
-                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptas aliquid sequi vel culpa, quam voluptates perferendis ducimus numquam dignissimos nihil? Atque nobis ullam accusantium aut sunt eius animi dicta facere obcaecati beatae impedit harum, vero cupiditate nisi voluptatem veniam alias!
+                E-D-I CONSEIL nous a permis de sécuriser notre migration EDI en un temps record. Leur expertise sur TradeXpress et OpenText a été décisive. Très professionnel et toujours à l'écoute.
               </p>
               <div className="customer__details">
                 <div className="customer__img">
@@ -53,7 +51,7 @@ const Testimonial = () => {
 
             <div className="slider__item">
               <p className="description">
-                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Tempore molestiae eius aspernatur blanditiis eaque sunt, obcaecati saepe aut id ullam, harum, autem assumenda officia eum? Iure cumque perspiciatis deserunt molestias, incidunt vero enim rerum architecto, nobis itaque, earum recusandae consequatur.
+                Grâce à l’intervention de M. Nejjari, nous avons pu anticiper les exigences Factur-X et assurer notre conformité réglementaire. Une approche claire, structurée et efficace.
               </p>
               <div className="customer__details">
                 <div className="customer__img">
@@ -68,19 +66,18 @@ const Testimonial = () => {
 
             <div className="slider__item">
               <p className="description">
-                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Tempore molestiae eius aspernatur blanditiis eaque sunt, obcaecati saepe aut id ullam, harum, autem assumenda officia eum? Iure cumque perspiciatis deserunt molestias, incidunt vero enim rerum architecto, nobis itaque, earum recusandae consequatur.
+                L’équipe a bénéficié d’une formation complète sur les flux EDI, avec cas pratiques et montée en compétence rapide. Un vrai plus pour notre autonomie opérationnelle.
               </p>
               <div className="customer__details">
                 <div className="customer__img">
                   <img src={ava03} alt="Customer" />
                 </div>
                 <div>
-                  <h5 className="customer__name">Mark ezer</h5>
-                  <p className="description">Directeur fantastique, falconseil</p>
+                  <h5 className="customer__name">Marc Esser</h5>
+                  <p className="description">Responsable Applicatif, Falconseil</p>
                 </div>
               </div>
             </div>
-
           </Slider>
         </div>
       </div>

@@ -35,13 +35,19 @@ const Team = () => {
 
             <div className="ceo__social">
               <span>
-                <i className="ri-linkedin-line"></i>
+                <a href="https://www.linkedin.com/in/mohammed-nejjari-b2a31a65/">
+                  <i className="ri-linkedin-line"></i>
+                </a>
               </span>
               <span>
                 <i className="ri-twitter-line"></i>
               </span>
               <span>
-                <i className="ri-mail-line"></i>
+                <a
+                  href="mailto:contact@ediconseil.net"
+                >
+                  <i className="ri-mail-line"></i>
+                </a>
               </span>
             </div>
           </div>

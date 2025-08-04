@@ -6,18 +6,18 @@ import aboutImg from "../../images/about-us.jpg";
 const chooseData = [
   {
     icon: "ri-wifi-line",
-    title: "First Working process",
-    desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia sint assumenda reiciendis sit maiores facilis laudantium et non fugit debitis?",
+    title: "Expertise technique pointue",
+    desc: "Plus de 10 ans d'expérience sur les solutions EDI et Middleware : TradeXpress, OpenText, Generix, IBM Sterling, etc.",
   },
   {
     icon: "ri-team-line",
-    title: "Dedicated Team",
-    desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia sint assumenda reiciendis sit maiores facilis laudantium et non fugit debitis?",
+    title: "Accompagnement personnalisé",
+    desc: "Nous intervenons auprès des PME, ETI et grands groupes avec des solutions adaptées à chaque contexte métier.",
   },
   {
     icon: "ri-customer-service-2-line",
-    title: "24/7 Hours support",
-    desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia sint assumenda reiciendis sit maiores facilis laudantium et non fugit debitis?",
+    title: "Support et réactivité",
+    desc: "Un support technique de niveau 1 à 3, avec astreinte, documentation claire et supervision proactive des flux critiques.",
   },
 ];
 
@@ -27,14 +27,13 @@ const About = () => {
       <div className="container">
         <div className="about__wrapper">
           <div className="about__content">
-            <h6 className="subtitle">Why choose us</h6>
-            <h2>Specialist in aviding clients on</h2>
-            <h2 className="highlight"> financial challenges</h2>
+            <h6 className="subtitle">Pourquoi nous choisir</h6>
+            <h2>Spécialistes de l’intégration</h2>
+            <h2 className="highlight">EDI et Middleware</h2>
             <p className="description about__content-desc">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit.
-              Architecto ratione, ullam animi explicabo saepe cumque, suscipit
-              quos necessitatibus possimus recusandae molestias ipsa cupiditate
-              quisquam eum quod temporibus perferendis. Dolorum, accusamus!
+              E-D-I CONSEIL vous accompagne dans tous vos projets d’échange de données interentreprises :
+              audit, migration, conformité réglementaire, support et formation. 
+              Nous sommes le partenaire de confiance pour réussir votre transformation numérique.
             </p>
 
             <div className="choose__item-wrapper">

@@ -3,42 +3,42 @@ import "./footer.css";
 
 const quickLinks01 = [
   {
-    path: "#",
-    display: "Marketing",
+    path: "#services",
+    display: "Audit & Conseil",
   },
   {
-    path: "#",
-    display: "Analytics",
+    path: "#services",
+    display: "Migration EDI",
   },
   {
-    path: "#",
-    display: "Commerce",
+    path: "#services",
+    display: "Formation",
   },
 ];
 
 const quickLinks02 = [
   {
-    path: "#",
-    display: "Pricing",
+    path: "#services",
+    display: "Support & TMA",
   },
   {
-    path: "#",
-    display: "Documentation",
+    path: "#blog",
+    display: "Actualités EDI",
   },
   {
-    path: "#",
-    display: "Guides",
+    path: "#resources",
+    display: "Ressources",
   },
 ];
 
 const quickLinks03 = [
   {
     path: "#about",
-    display: "About",
+    display: "À propos",
   },
   {
-    path: "#",
-    display: "Jobs",
+    path: "#careers",
+    display: "Carrières",
   },
   {
     path: "#contact",
@@ -48,19 +48,17 @@ const quickLinks03 = [
 
 const Footer = () => {
 
-    const date = new Date().getFullYear() ;
+  const date = new Date().getFullYear();
   return (
     <footer className="footer">
       <div className="container">
         <div className="footer__wrapper">
           <div className="footer__logo">
             <h2>E-D-I CONSEIL</h2>
-            <p className="description">Grow with us</p>
+            <p className="description">L'expertise EDI à votre service</p>
 
             <p className="small__text description">
-              Lorem ipsum dolor sit amet consectetur, adipisicing elit. A
-              perferendis ducimus deserunt, provident tempora in tempore esse
-              nobis dicta saepe?
+              Cabinet de conseil spécialisé en EDI et Middleware. Nous accompagnons votre transformation numérique grâce à une expertise pointue et un accompagnement personnalisé.
             </p>
           </div>
 
@@ -87,7 +85,7 @@ const Footer = () => {
           </div>
 
           <div className="footer__quick-links">
-            <h3 className="quick__links-title">Company</h3>
+            <h3 className="quick__links-title">Entreprise</h3>
             <ul className="quick__links">
               {quickLinks03.map((item, index) => (
                 <li className="quick__links-item" key={index}>
@@ -98,7 +96,7 @@ const Footer = () => {
           </div>
         </div>
 
-        <p className="copyright">Copyright {date} , developed by Mohammed Akram Nejjari. All rights reserved.</p>
+        <p className="copyright">Copyright {date} , développé par Mohammed Akram Nejjari. Tous droits réservés.</p>
       </div>
     </footer>
   );
