@@ -24,10 +24,10 @@ const Hero = ({ theme }) => {
 
             <div className="hero__btns">
               <a href="/rendez-vous">
-                <button className="primary__btn">Prendre un RDV</button>
+                <button className="primary__btn">Prendre un Rendez-vous</button>
               </a>
-              <a href="#ensavoirplus">
-                <button className="secondary__btn">En savoir plus</button>
+              <a href="/carriere">
+                <button className="secondary__btn">Nous rejoindre</button>
               </a>
             </div>
           </div>

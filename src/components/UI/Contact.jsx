@@ -29,7 +29,7 @@ const Contact = () => {
   };
 
   return (
-    <section id='contact' className="contact-section">
+    <section  className="contact-section">
       <div className="container">
         {/* Section Carte */}
         <div className="map-section">
@@ -64,7 +64,7 @@ const Contact = () => {
           </div>
         </div>
 
-        <div className="contact-content">
+        <div id='contact' className="contact-content">
           <div className="contact-info">
             <h2 className="section-title">Contactez-nous</h2>
             <p className="subtitle">Besoin d’un accompagnement EDI ?</p>

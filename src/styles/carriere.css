@@ -1,0 +1,768 @@
+/* ================================
+   CARRIERE PAGE STYLES
+   Compatible avec le thème global
+   ================================ */
+
+/* Main carriere section container */
+.carriere-section {
+  padding: 80px 0;
+  min-height: 100vh;
+  background: var(--body-bg);
+}
+
+/* Header section with title and description */
+.carriere-header {
+  text-align: center;
+  margin-bottom: 60px;
+}
+
+.carriere-header h1 {
+  font-size: 3rem;
+  margin-bottom: 20px;
+  background: var(--counter-color);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-weight: 700;
+}
+
+.carriere-header .description {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  color: var(--small-text-color);
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+/* ================================
+   SUCCESS MESSAGE
+   ================================ */
+
+.success-message {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  background: linear-gradient(135deg, #10b981, #059669);
+  color: white;
+  padding: 20px;
+  border-radius: 15px;
+  margin-bottom: 40px;
+  box-shadow: 0 10px 30px rgba(16, 185, 129, 0.3);
+}
+
+.success-message h3 {
+  color: white;
+  font-size: 1.2rem;
+  margin-bottom: 5px;
+}
+
+.success-message p {
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 0.9rem;
+  margin: 0;
+}
+
+/* ================================
+   MAIN CONTENT LAYOUT
+   ================================ */
+
+.carriere-content {
+  display: flex;
+  flex-direction: column;
+  gap: 60px;
+}
+
+/* ================================
+   POSITIONS SECTION
+   ================================ */
+
+.positions-section h2 {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  color: var(--heading-color);
+  font-size: 2.2rem;
+  font-weight: 600;
+  margin-bottom: 40px;
+}
+
+.positions-section h2 svg {
+  color: var(--primary-color);
+}
+
+.position-card {
+  background: var(--card-bg);
+  border-radius: 20px;
+  padding: 40px;
+  margin-bottom: 30px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+  transition: all 0.3s ease;
+}
+
+.position-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+}
+
+.position-header {
+  margin-bottom: 30px;
+}
+
+.position-info h3 {
+  color: var(--heading-color);
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 15px;
+  background: var(--counter-color);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.position-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  align-items: center;
+}
+
+.position-type {
+  background: var(--primary-color);
+  color: white;
+  padding: 6px 15px;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+.position-location,
+.position-date,
+.position-experience {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--small-text-color);
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+.position-location svg,
+.position-date svg,
+.position-experience svg {
+  color: var(--primary-color);
+}
+
+.position-content {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 30px;
+}
+
+.position-description h4 {
+  color: var(--heading-color);
+  font-size: 1.3rem;
+  font-weight: 600;
+  margin-bottom: 15px;
+}
+
+.position-description p {
+  color: var(--small-text-color);
+  line-height: 1.6;
+  font-size: 1rem;
+}
+
+.position-details {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 30px;
+}
+
+.requirements h4,
+.responsibilities h4 {
+  color: var(--heading-color);
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin-bottom: 15px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.requirements ul,
+.responsibilities ul {
+  list-style: none;
+  padding: 0;
+}
+
+.requirements li,
+.responsibilities li {
+  color: var(--small-text-color);
+  line-height: 1.6;
+  margin-bottom: 10px;
+  padding-left: 20px;
+  position: relative;
+}
+
+.requirements li::before,
+.responsibilities li::before {
+  content: "→";
+  color: var(--primary-color);
+  font-weight: bold;
+  position: absolute;
+  left: 0;
+}
+
+/* ================================
+   BENEFITS SECTION
+   ================================ */
+
+.benefits-section h2 {
+  color: var(--heading-color);
+  font-size: 2.2rem;
+  font-weight: 600;
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+.benefits-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 30px;
+}
+
+.benefit-card {
+  background: var(--card-bg);
+  border-radius: 20px;
+  padding: 30px;
+  text-align: center;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+  transition: all 0.3s ease;
+}
+
+.benefit-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+}
+
+.benefit-icon {
+  width: 70px;
+  height: 70px;
+  background: var(--icon-bg);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 20px;
+  color: var(--primary-color);
+  transition: all 0.3s ease;
+}
+
+.benefit-card:hover .benefit-icon {
+  background: var(--primary-color);
+  color: white;
+  transform: scale(1.1);
+}
+
+.benefit-card h3 {
+  color: var(--heading-color);
+  font-size: 1.3rem;
+  font-weight: 600;
+  margin-bottom: 15px;
+}
+
+.benefit-card p {
+  color: var(--small-text-color);
+  line-height: 1.6;
+  font-size: 0.95rem;
+}
+
+/* ================================
+   APPLICATION SECTION
+   ================================ */
+
+.application-section {
+  background: var(--card-bg);
+  border-radius: 25px;
+  padding: 50px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 15px 50px rgba(0, 0, 0, 0.3);
+  position: relative;
+  z-index: 3;
+  overflow: visible;
+}
+
+.application-header {
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+.application-header h2 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+  color: var(--heading-color);
+  font-size: 2.2rem;
+  font-weight: 600;
+  margin-bottom: 15px;
+}
+
+.application-header h2 svg {
+  color: var(--primary-color);
+}
+
+.application-header p {
+  color: var(--small-text-color);
+  font-size: 1.1rem;
+  line-height: 1.6;
+}
+
+/* ================================
+   FORM STYLES
+   ================================ */
+
+.application-form {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  position: relative;
+  z-index: 2;
+}
+
+.form-section {
+  background: var(--icon-bg);
+  border-radius: 15px;
+  padding: 30px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  position: relative;
+  z-index: 1;
+  margin-bottom: 20px;
+}
+
+.form-section h3 {
+  color: var(--heading-color);
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 25px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  position: relative;
+  z-index: 6;
+  background: var(--icon-bg);
+  padding: 0;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 25px;
+  margin-bottom: 25px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--heading-color);
+  margin-bottom: 10px;
+  position: relative;
+  z-index: 5;
+}
+
+.form-label svg {
+  color: var(--primary-color);
+}
+
+.form-input,
+.form-select,
+.form-textarea {
+  width: 100%;
+  padding: 15px;
+  background: var(--body-bg);
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  color: var(--heading-color);
+  font-size: 0.9rem;
+  font-family: var(--font-name);
+  transition: all 0.3s ease;
+  position: relative;
+  z-index: 4;
+}
+
+.form-input::placeholder,
+.form-textarea::placeholder {
+  color: var(--small-text-color);
+  opacity: 0.7;
+}
+
+.form-input:focus,
+.form-select:focus,
+.form-textarea:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 3px rgba(55, 156, 246, 0.1);
+}
+
+.form-input.error,
+.form-select.error,
+.form-textarea.error {
+  border-color: #ef4444;
+  box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.1);
+}
+
+.form-textarea {
+  resize: none;
+  min-height: 120px;
+  line-height: 1.6;
+}
+
+.character-count {
+  font-size: 0.8rem;
+  color: var(--small-text-color);
+  margin-top: 8px;
+  text-align: right;
+}
+
+.error-message {
+  color: #ef4444;
+  font-size: 0.8rem;
+  margin-top: 5px;
+  font-weight: 500;
+}
+
+/* ================================
+   FILE UPLOAD STYLES
+   ================================ */
+
+.upload-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 25px;
+}
+
+.upload-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.upload-label {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--heading-color);
+  margin-bottom: 10px;
+  position: relative;
+  z-index: 5;
+}
+
+.upload-label svg {
+  color: var(--primary-color);
+}
+
+.upload-input {
+  width: 100%;
+  padding: 15px;
+  background: var(--body-bg);
+  border: 2px dashed rgba(255, 255, 255, 0.3);
+  border-radius: 10px;
+  color: var(--heading-color);
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  z-index: 4;
+}
+
+.upload-input:hover {
+  border-color: var(--primary-color);
+  background: rgba(55, 156, 246, 0.05);
+}
+
+.file-info {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 10px;
+  padding: 10px;
+  background: var(--primary-color);
+  color: white;
+  border-radius: 8px;
+  font-size: 0.85rem;
+  font-weight: 500;
+}
+
+.file-info svg {
+  color: white;
+}
+
+/* ================================
+   SUBMIT SECTION
+   ================================ */
+
+.form-submit {
+  text-align: center;
+  padding-top: 20px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  margin-top: 40px;
+}
+
+.submit-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  background: var(--btn-primary-bg);
+  color: var(--heading-color);
+  border: none;
+  padding: 18px 40px;
+  border-radius: 12px;
+  font-weight: 600;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  margin-bottom: 15px;
+}
+
+.submit-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 15px 40px rgba(55, 156, 246, 0.4);
+  opacity: 0.9;
+}
+
+.submit-btn svg {
+  color: var(--heading-color);
+}
+
+.form-note {
+  color: var(--small-text-color);
+  font-size: 0.85rem;
+  line-height: 1.5;
+  margin: 0;
+}
+
+/* ================================
+   LIGHT THEME ADAPTATIONS
+   ================================ */
+
+.light-theme .position-card,
+.light-theme .benefit-card,
+.light-theme .application-section {
+  background: var(--card-bg);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+}
+
+.light-theme .position-card:hover,
+.light-theme .benefit-card:hover {
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+}
+
+.light-theme .form-section {
+  background: rgba(0, 0, 0, 0.03);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.light-theme .form-input,
+.light-theme .form-select,
+.light-theme .form-textarea {
+  background: white;
+  border: 2px solid rgba(0, 0, 0, 0.1);
+}
+
+.light-theme .form-input:focus,
+.light-theme .form-select:focus,
+.light-theme .form-textarea:focus {
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 3px rgba(129, 106, 255, 0.1);
+}
+
+.light-theme .upload-input {
+  background: white;
+  border: 2px dashed rgba(0, 0, 0, 0.2);
+}
+
+.light-theme .upload-input:hover {
+  border-color: var(--primary-color);
+  background: rgba(129, 106, 255, 0.05);
+}
+
+.light-theme .benefit-icon {
+  background: rgba(0, 0, 0, 0.05);
+}
+
+.light-theme .benefit-card:hover .benefit-icon {
+  background: var(--primary-color);
+  color: white;
+}
+
+.light-theme .success-message {
+  background: linear-gradient(135deg, #10b981, #059669);
+  box-shadow: 0 10px 30px rgba(16, 185, 129, 0.2);
+}
+
+.light-theme .carriere-header h1 {
+  background-color: var(--primary-color);
+}
+
+.light-theme .position-info h3 {
+  background-color: var(--primary-color);
+}
+
+.light-theme .benefit-card ,.light-theme .application-section {
+  border: 2px solid var(--primary-color);
+}
+
+
+
+/* ================================
+   RESPONSIVE DESIGN
+   ================================ */
+
+@media (max-width: 1024px) {
+  .position-details {
+    grid-template-columns: 1fr;
+    gap: 25px;
+  }
+  
+  .benefits-grid {
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 25px;
+  }
+  
+  .application-section {
+    padding: 40px 30px;
+  }
+}
+
+@media (max-width: 768px) {
+  .carriere-header h1 {
+    font-size: 2.5rem;
+  }
+  
+  .position-card {
+    padding: 30px 25px;
+  }
+  
+  .position-info h3 {
+    font-size: 1.6rem;
+  }
+  
+  .position-meta {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+  
+  .form-row {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  
+  .upload-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  
+  .application-section {
+    padding: 30px 20px;
+    overflow-x: hidden;
+  }
+  
+  .positions-section h2,
+  .benefits-section h2,
+  .application-header h2 {
+    font-size: 1.8rem;
+  }
+  
+  .success-message {
+    flex-direction: column;
+    text-align: center;
+    gap: 10px;
+  }
+  
+  .form-section {
+    margin-bottom: 30px;
+    padding: 25px;
+  }
+}
+
+@media (max-width: 480px) {
+  .carriere-section {
+    padding: 40px 0;
+  }
+  
+  .carriere-header h1 {
+    font-size: 2rem;
+  }
+  
+  .position-card,
+  .benefit-card {
+    padding: 20px;
+  }
+  
+  .form-section {
+    padding: 20px;
+  }
+  
+  .application-section {
+    padding: 25px 15px;
+  }
+  
+  .submit-btn {
+    padding: 15px 30px;
+    font-size: 1rem;
+  }
+  
+  .benefit-icon {
+    width: 60px;
+    height: 60px;
+  }
+  
+  .positions-section h2,
+  .benefits-section h2,
+  .application-header h2 {
+    font-size: 1.5rem;
+    flex-direction: column;
+    gap: 10px;
+  }
+}
+
+/* ================================
+   FIX POUR NAVIGATEURS WEBKIT
+   ================================ */
+
+@supports (-webkit-appearance: none) {
+  .form-section {
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+  }
+}
+
+/* ================================
+   FIX POUR APPAREILS TACTILES
+   ================================ */
+
+@media (hover: none) and (pointer: coarse) {
+  .form-input:focus,
+  .form-select:focus,
+  .form-textarea:focus {
+    transform: none;
+  }
+  
+  .upload-input:hover {
+    transform: none;
+  }
+}
+

@@ -842,3 +842,7 @@
     font-size: 2rem;
   }
 }
+
+.light-theme .appointment-header h1 {
+  background-color: var(--primary-color);
+}
