@@ -1,0 +1,29 @@
+{
+  "files": {
+    "main.css": "/static/css/main.3398754d.css",
+    "main.js": "/static/js/main.cc5334fa.js",
+    "static/media/les-mains-avec-un-ordinateur-portable-et-la-carte-du-monde-virtuel.jpg": "/static/media/les-mains-avec-un-ordinateur-portable-et-la-carte-du-monde-virtuel.2eb945d7b629aa38c7af.jpg",
+    "static/media/remixicon.svg?t=1734404658139": "/static/media/remixicon.df9902a6df13645438e1.svg",
+    "static/media/about-us.jpg": "/static/media/about-us.9446fb0339368a482c2c.jpg",
+    "static/media/remixicon.eot?t=1734404658139": "/static/media/remixicon.29066d810a74e994be27.eot",
+    "static/media/remixicon.ttf?t=1734404658139": "/static/media/remixicon.868d1a768f4762dbcc3e.ttf",
+    "static/media/ava-1.jpg": "/static/media/ava-1.c185d7723fe40ec46830.jpg",
+    "static/media/ava-3.jpg": "/static/media/ava-3.1442075049ece43143f2.jpg",
+    "static/media/ceo.png": "/static/media/ceo.c437ef993c910a4cbe88.png",
+    "static/media/ava-2.jpg": "/static/media/ava-2.11e918c656d0c7851624.jpg",
+    "static/media/remixicon.woff?t=1734404658139": "/static/media/remixicon.ce82bb240fef24f93f95.woff",
+    "static/media/remixicon.woff2?t=1734404658139": "/static/media/remixicon.bb211d855a1864aa5b67.woff2",
+    "static/media/hero-img.jpg": "/static/media/hero-img.3fa7537e354cd2de72ce.jpg",
+    "static/media/slick.svg": "/static/media/slick.2630a3e3eab21c607e21.svg",
+    "static/media/slick.eot": "/static/media/slick.a4e97f5a2a64f0ab1323.eot",
+    "static/media/slick.ttf": "/static/media/slick.c94f7671dcc99dce43e2.ttf",
+    "static/media/slick.woff": "/static/media/slick.295183786cd8a1389865.woff",
+    "index.html": "/index.html",
+    "main.3398754d.css.map": "/static/css/main.3398754d.css.map",
+    "main.cc5334fa.js.map": "/static/js/main.cc5334fa.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.3398754d.css",
+    "static/js/main.cc5334fa.js"
+  ]
+}
