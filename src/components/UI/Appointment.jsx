@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Calendar, Clock, Video, Phone, User, Mail, Building, MessageSquare, Check } from 'lucide-react';
+import emailjs from '@emailjs/browser';
 
 import '../../styles/appointment.css';
 
@@ -23,6 +24,7 @@ const Appointment = () => {
   
   // État pour afficher la page de confirmation
   const [showConfirmation, setShowConfirmation] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
   // ============ GESTION DU CALENDRIER ============
   
@@ -83,51 +85,55 @@ const Appointment = () => {
     setCurrentStep(3); // Passe à l'étape 3 (formulaire de contact)
   };
 
-  // Gère la soumission du formulaire - POINT CRITIQUE POUR LA SAUVEGARDE
-  const handleFormSubmit = () => {
+  // Gère la soumission du formulaire avec envoi d'email
+  const handleFormSubmit = async () => {
     // Vérifie que les champs obligatoires sont remplis
     if (formData.fullName && formData.email && formData.phone) {
+      setIsLoading(true);
       
-      // ⚠️⚠️⚠️ POINT IMPORTANT : ICI IL FAUDRAIT SAUVEGARDER LES DONNÉES ⚠️⚠️⚠️
-      // Actuellement, les données ne sont que dans l'état React local !
-      // 
-      // TOUTES LES DONNÉES DU RENDEZ-VOUS SONT DISPONIBLES ICI :
-      const appointmentData = {
-        // Informations du rendez-vous
-        date: selectedDate,                    // Ex: "2024-08-15"
-        time: selectedTime,                    // Ex: "14:30"
-        consultationType: consultationType,    // "video" ou "phone"
+      try {
+        // Configuration EmailJS
+        const serviceID = 'service_51oo08n'; // À remplacer
+        const templateID = 'template_k2ly08a'; // À créer dans EmailJS
+        const userID = 'r9nQCNNF8LNC5ieDS'; // À remplacer
+
+        // Formatage de la date pour l'email
+        const formattedDate = new Date(selectedDate).toLocaleDateString('fr-FR', {
+          weekday: 'long',
+          year: 'numeric',
+          month: 'long',
+          day: 'numeric'
+        });
+
+        const templateParams = {
+          // Informations du rendez-vous
+          appointment_date: formattedDate,
+          appointment_time: selectedTime,
+          consultation_type: consultationType === 'video' ? 'Visioconférence' : 'Appel téléphonique',
+          duration: '45 minutes',
+          
+          // Informations du client
+          client_name: formData.fullName,
+          client_email: formData.email,
+          client_phone: formData.phone,
+          client_company: formData.company || 'Non spécifiée',
+          client_requirements: formData.requirements || 'Aucun besoin spécifique mentionné',
+          
+          // Email de destination
+          to_email: 'akramnejjari726@gmail.com'
+        };
+
+        await emailjs.send(serviceID, templateID, templateParams, userID);
         
-        // Informations du client
-        fullName: formData.fullName,
-        email: formData.email,
-        phone: formData.phone,
-        company: formData.company,
-        requirements: formData.requirements
-      };
-      
-      // EXEMPLE D'APPEL API À AJOUTER :
-      /*
-      fetch('/api/appointments', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(appointmentData)
-      })
-      .then(response => response.json())
-      .then(data => {
-        console.log('Rendez-vous sauvegardé:', data);
+        // Affiche la page de confirmation
         setShowConfirmation(true);
-      })
-      .catch(error => {
-        console.error('Erreur lors de la sauvegarde:', error);
-        // Gérer l'erreur (afficher un message à l'utilisateur)
-      });
-      */
-      
-      // Pour l'instant, on affiche juste la confirmation
-      setShowConfirmation(true);
+        
+      } catch (error) {
+        console.error('Erreur lors de l\'envoi:', error);
+        alert('Erreur lors de la réservation. Veuillez réessayer ou nous contacter directement.');
+      } finally {
+        setIsLoading(false);
+      }
     }
   };
 
@@ -513,8 +519,9 @@ const Appointment = () => {
                     type="button"
                     onClick={handleFormSubmit}
                     className="btn-primary submit-btn"
+                    disabled={isLoading}
                   >
-                    Confirmer le rendez-vous
+                    {isLoading ? 'Réservation en cours...' : 'Confirmer le rendez-vous'}
                   </button>
                 </div>
               )}

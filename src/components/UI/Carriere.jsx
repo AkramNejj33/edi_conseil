@@ -16,6 +16,7 @@ import {
   Star,
   Calendar
 } from 'lucide-react';
+import emailjs from '@emailjs/browser';
 
 import '../../styles/carriere.css';
 
@@ -44,6 +45,7 @@ const Carriere = () => {
   // État pour l'affichage des messages
   const [showSuccess, setShowSuccess] = useState(false);
   const [errors, setErrors] = useState({});
+  const [isLoading, setIsLoading] = useState(false);
 
   // ============ DONNÉES DES POSTES DISPONIBLES ============
   
@@ -171,75 +173,83 @@ const Carriere = () => {
     return Object.keys(newErrors).length === 0;
   };
 
-  // Gestion de la soumission du formulaire
-  const handleSubmit = (e) => {
+  // Convertit un fichier en base64 pour l'envoi par email
+  const fileToBase64 = (file) => {
+    return new Promise((resolve, reject) => {
+      const reader = new FileReader();
+      reader.readAsDataURL(file);
+      reader.onload = () => resolve(reader.result);
+      reader.onerror = error => reject(error);
+    });
+  };
+
+  // Gestion de la soumission du formulaire avec EmailJS
+  const handleSubmit = async (e) => {
     e.preventDefault();
     
     if (validateForm()) {
-      // ⚠️⚠️⚠️ POINT IMPORTANT : ICI IL FAUDRAIT ENVOYER LES DONNÉES AU BACKEND ⚠️⚠️⚠️
+      setIsLoading(true);
       
-      const candidatureData = {
-        // Informations personnelles
-        fullName: formData.fullName,
-        email: formData.email,
-        phone: formData.phone,
-        position: formData.position,
-        experience: formData.experience,
-        education: formData.education,
-        motivation: formData.motivation,
-        availability: formData.availability,
+      try {
+        // Configuration EmailJS
+        const serviceID = 'service_51oo08n'; // À remplacer
+        const templateID = 'template_recruitment'; // À créer dans EmailJS
+        const userID = 'r9nQCNNF8LNC5ieDS'; // À remplacer
+
+        // Préparation des informations sur les fichiers
+        let filesInfo = '';
+        if (files.cv) filesInfo += `✅ CV: ${files.cv.name} (${(files.cv.size / 1024).toFixed(1)} KB)\n`;
+        if (files.coverLetter) filesInfo += `✅ Lettre de motivation: ${files.coverLetter.name} (${(files.coverLetter.size / 1024).toFixed(1)} KB)\n`;
+        if (files.portfolio) filesInfo += `✅ Portfolio: ${files.portfolio.name} (${(files.portfolio.size / 1024).toFixed(1)} KB)\n`;
+        if (!filesInfo) filesInfo = 'Aucun fichier joint';
+
+        const templateParams = {
+          // Informations personnelles
+          candidate_name: formData.fullName,
+          candidate_email: formData.email,
+          candidate_phone: formData.phone,
+          
+          // Candidature
+          position_applied: formData.position,
+          experience_level: formData.experience || 'Non spécifiée',
+          education_level: formData.education || 'Non spécifiée',
+          availability: formData.availability || 'Non spécifiée',
+          
+          // Motivation
+          motivation_letter: formData.motivation,
+          
+          // Fichiers (informations seulement - EmailJS ne supporte pas les fichiers binaires)
+          files_info: filesInfo,
+          
+          // Métadonnées
+          application_date: new Date().toLocaleDateString('fr-FR'),
+          application_time: new Date().toLocaleTimeString('fr-FR'),
+          
+          // Email de destination
+          to_email: 'akramnejjari726@gmail.com'
+        };
+
+        await emailjs.send(serviceID, templateID, templateParams, userID);
         
-        // Fichiers (à traiter avec FormData pour l'upload)
-        cv: files.cv,
-        coverLetter: files.coverLetter,
-        portfolio: files.portfolio,
-        
-        // Métadonnées
-        applicationDate: new Date().toISOString(),
-        status: 'En attente'
-      };
-      
-      // EXEMPLE D'APPEL API À AJOUTER :
-      /*
-      const formDataToSend = new FormData();
-      Object.keys(candidatureData).forEach(key => {
-        if (candidatureData[key] !== null && candidatureData[key] !== '') {
-          formDataToSend.append(key, candidatureData[key]);
-        }
-      });
-      
-      fetch('/api/candidatures', {
-        method: 'POST',
-        body: formDataToSend
-      })
-      .then(response => response.json())
-      .then(data => {
-        console.log('Candidature envoyée:', data);
+        // Affichage du message de succès
         setShowSuccess(true);
-        // Reset du formulaire
-        setFormData({
-          fullName: '', email: '', phone: '', position: '',
-          experience: '', education: '', motivation: '', availability: ''
-        });
-        setFiles({ cv: null, coverLetter: null, portfolio: null });
-      })
-      .catch(error => {
+        
+        // Reset du formulaire après 3 secondes
+        setTimeout(() => {
+          setShowSuccess(false);
+          setFormData({
+            fullName: '', email: '', phone: '', position: '',
+            experience: '', education: '', motivation: '', availability: ''
+          });
+          setFiles({ cv: null, coverLetter: null, portfolio: null });
+        }, 3000);
+        
+      } catch (error) {
         console.error('Erreur lors de l\'envoi:', error);
-      });
-      */
-      
-      // Pour l'instant, on affiche juste le succès
-      setShowSuccess(true);
-      
-      // Reset du formulaire après 3 secondes
-      setTimeout(() => {
-        setShowSuccess(false);
-        setFormData({
-          fullName: '', email: '', phone: '', position: '',
-          experience: '', education: '', motivation: '', availability: ''
-        });
-        setFiles({ cv: null, coverLetter: null, portfolio: null });
-      }, 3000);
+        alert('Erreur lors de l\'envoi de la candidature. Veuillez réessayer ou nous contacter directement.');
+      } finally {
+        setIsLoading(false);
+      }
     }
   };
 
@@ -498,6 +508,10 @@ const Carriere = () => {
               {/* ============ UPLOAD DE FICHIERS ============ */}
               <div className="form-section">
                 <h3>Documents</h3>
+                <p className="form-note" style={{marginBottom: '1rem', color: '#666'}}>
+                  ⚠️ Les fichiers seront mentionnés dans l'email mais pas joints automatiquement. 
+                  Vous devrez les envoyer séparément à akramnejjari726@gmail.com
+                </p>
                 
                 <div className="upload-grid">
                   <div className="upload-group">
@@ -584,9 +598,9 @@ const Carriere = () => {
 
               {/* ============ BOUTON DE SOUMISSION ============ */}
               <div className="form-submit">
-                <button type="submit" className="btn-primary submit-btn">
+                <button type="submit" className="btn-primary submit-btn" disabled={isLoading}>
                   <Send size={20} />
-                  Envoyer ma candidature
+                  {isLoading ? 'Envoi en cours...' : 'Envoyer ma candidature'}
                 </button>
                 <p className="form-note">
                   * Champs obligatoires. Vos données personnelles sont traitées de manière confidentielle.

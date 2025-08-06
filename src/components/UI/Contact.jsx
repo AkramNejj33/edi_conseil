@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import emailjs from '@emailjs/browser';
 import '../../styles/contact.css';
 
 const Contact = () => {
@@ -9,6 +10,8 @@ const Contact = () => {
     message: ''
   });
 
+  const [isLoading, setIsLoading] = useState(false);
+
   const handleChange = (e) => {
     setFormData({
       ...formData,
@@ -16,20 +19,45 @@ const Contact = () => {
     });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log('Form submitted:', formData);
-    setFormData({
-      name: '',
-      email: '',
-      subject: '',
-      message: ''
-    });
-    alert('Message envoyé avec succès !');
+    setIsLoading(true);
+
+    try {
+      // Configuration EmailJS
+      const serviceID = 'service_51oo08n'; // À remplacer
+      const templateID = 'template_3zfqvwi'; // À créer dans EmailJS
+      const userID = 'r9nQCNNF8LNC5ieDS'; // À remplacer
+
+      const templateParams = {
+        from_name: formData.name,
+        from_email: formData.email,
+        subject: formData.subject,
+        message: formData.message,
+        to_email: 'akramnejjari726@gmail.com'
+      };
+
+      await emailjs.send(serviceID, templateID, templateParams, userID);
+      
+      // Réinitialiser le formulaire
+      setFormData({
+        name: '',
+        email: '',
+        subject: '',
+        message: ''
+      });
+      
+      alert('Message envoyé avec succès !');
+    } catch (error) {
+      console.error('Erreur lors de l\'envoi:', error);
+      alert('Erreur lors de l\'envoi du message. Veuillez réessayer.');
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   return (
-    <section  className="contact-section">
+    <section className="contact-section">
       <div className="container">
         {/* Section Carte */}
         <div className="map-section">
@@ -67,7 +95,7 @@ const Contact = () => {
         <div id='contact' className="contact-content">
           <div className="contact-info">
             <h2 className="section-title">Contactez-nous</h2>
-            <p className="subtitle">Besoin d’un accompagnement EDI ?</p>
+            <p className="subtitle">Besoin d'un accompagnement EDI ?</p>
             <p className="description">
               Discutons ensemble de vos projets : audit, migration, conformité, ou support technique. 
               E-D-I CONSEIL vous répond rapidement et efficacement.
@@ -76,7 +104,7 @@ const Contact = () => {
             <div className="contact-details">
               <div className="contact-item">
                 <div className="contact-icon">
-                  <i class="ri-map-pin-line"></i>
+                  <i className="ri-map-pin-line"></i>
                 </div>
                 <div className="contact-text">
                   <h4>Adresse</h4>
@@ -86,7 +114,7 @@ const Contact = () => {
 
               <div className="contact-item">
                 <div className="contact-icon">
-                  <i class="ri-phone-line"></i>
+                  <i className="ri-phone-line"></i>
                 </div>
                 <div className="contact-text">
                   <h4>Téléphone</h4>
@@ -96,7 +124,7 @@ const Contact = () => {
 
               <div className="contact-item">
                 <div className="contact-icon">
-                  <i class="ri-mail-line"></i>
+                  <i className="ri-mail-line"></i>
                 </div>
                 <div className="contact-text">
                   <h4>Email</h4>
@@ -106,7 +134,7 @@ const Contact = () => {
 
               <div className="contact-item">
                 <div className="contact-icon">
-                  <i class="ri-time-line"></i>
+                  <i className="ri-time-line"></i>
                 </div>
                 <div className="contact-text">
                   <h4>Horaires</h4>
@@ -162,8 +190,8 @@ const Contact = () => {
                 ></textarea>
               </div>
 
-              <button type="submit" className="btn-primary">
-                Envoyer le message
+              <button type="submit" className="btn-primary" disabled={isLoading}>
+                {isLoading ? 'Envoi en cours...' : 'Envoyer le message'}
               </button>
             </form>
           </div>
