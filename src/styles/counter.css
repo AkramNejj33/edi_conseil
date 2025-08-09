@@ -26,3 +26,37 @@
     font-size: 1.5rem ;
 }
 
+@media only screen and (max-width:992px){
+    .counter__number{
+        font-size: 2rem;
+    }
+
+    .counter__title{
+        font-size: 1.2rem;
+    }
+
+    .counter__item{
+        width: 30%;
+    }
+}
+
+@media only screen and (max-width:768px){
+    .counter__number{
+        font-size: 1.5rem;
+    }
+
+    .counter__title{
+        font-size: 1rem;
+    }
+}
+
+@media only screen and (max-width:768px){
+    .counter__wrapper{
+        flex-direction: column;
+    }
+    .counter__item{
+        width: 100%;
+        margin-bottom: 30px;
+    }
+}
+

@@ -58,3 +58,31 @@
     border-radius: .5rem;
     border: 2px solid var(--primary-color);
 }
+
+@media only screen and (max-width:992px){
+    .service__top-content{
+        font-size: 1.5rem;
+    }
+    .service__item-wrapper{
+        flex-wrap: wrap;
+    }
+    .service__item{
+        width: 31%;
+        margin-bottom: 30px;
+    }
+}
+
+@media only screen and (max-width:768px){
+    .service__item{
+        width: 47.7%;
+    }
+    .service__title{
+        font-size: 1.2rem;
+    }
+}
+
+@media only screen and (max-width:576px){
+    .service__item{
+        width: 100%;
+    }
+}

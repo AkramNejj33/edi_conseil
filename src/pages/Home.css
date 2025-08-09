@@ -141,3 +141,15 @@ section{
     color: var(--counter-section-bg);
     transform: translateY(-3px);
 }
+
+@media only screen and (max-width:1024px) {
+  .container{
+    width: 100%;
+  }
+}
+
+@media only screen and (max-width:768px){
+  .section{
+    padding: 40px 0px;
+  }
+}
