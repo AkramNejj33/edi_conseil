@@ -5,7 +5,7 @@ import Counter from "../components/UI/Counter";
 import Services from "../components/UI/Services";
 import About from "../components/UI/About";
 import Team from "../components/UI/Team";
-import Testimonial from "../components/UI/Testimonial";
+import TrustUs from "../components/UI/TrustUs";
 import Contact from "../components/UI/Contact";
 
 
@@ -20,7 +20,7 @@ function Home({ theme }) {
       <About />
       <Team />
       <Contact />
-      <Testimonial />
+      <TrustUs />
     </>
   );
 }

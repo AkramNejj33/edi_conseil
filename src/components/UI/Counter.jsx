@@ -4,11 +4,11 @@ import "../../styles/counter.css";
 
 const counterData = [
   {
-    number: "10+",
+    number: "+10",
     text: "Années d'expertise",
   },
   {
-    number: "30+",
+    number: "+30",
     text: "Projets EDI réalisés",
   },
   {

@@ -1,0 +1,189 @@
+/* trustus.css */
+.trustus-section {
+    background: var(--body-bg);
+    padding: clamp(60px, 8vh, 80px) 0;
+}
+
+.trustus_content_top {
+    text-align: center;
+    margin-bottom: clamp(40px, 6vh, 60px);
+}
+
+.trustus_content_top .highlight {
+    color: var(--primary-color);
+    font-weight: 600;
+}
+
+.trustus__wrapper {
+    width: 90%;
+    margin: 15px auto 0;
+    position: relative;
+}
+
+.trustus__wrapper .slick-slide {
+    padding: 0 15px;
+}
+
+.trustus__wrapper .slick-track {
+    display: flex;
+    align-items: center;
+}
+
+.trustus__item {
+    background: var(--testimonial-bg);
+    padding: 40px 20px;
+    border-radius: 1rem;
+    text-align: center;
+    cursor: pointer;
+    border: 2px solid transparent;
+    box-shadow: 0 5px 20px rgb(0 0 0 / 0.1);
+    position: relative;
+    z-index: 1;
+    transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.trustus__item:hover {
+    transform: translateY(-8px);
+    border-color: var(--primary-color);
+    box-shadow: 0 12px 35px rgb(55 156 246 / 0.25);
+    z-index: 10;
+}
+
+.client__logo {
+    width: 120px;
+    height: 80px;
+    margin: 0 auto 25px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: white;
+    border-radius: 12px;
+    padding: 15px;
+}
+
+.client__logo img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    filter: grayscale(1);
+    transition: filter 0.3s ease;
+}
+
+.trustus__item:hover .client__logo img {
+    filter: grayscale(0);
+}
+
+.client__name {
+    font-size: 1.1rem;
+    color: var(--heading-color);
+    font-weight: 500;
+    margin: 0;
+    opacity: 0.8;
+    transition: opacity 0.3s ease, color 0.3s ease;
+}
+
+.trustus__item:hover .client__name {
+    opacity: 1;
+    color: var(--primary-color);
+}
+
+.trustus__wrapper .slick-dots {
+    bottom: -50px;
+}
+
+.trustus__wrapper .slick-dots li button:before {
+    color: var(--primary-color);
+    font-size: 12px;
+    opacity: 0.5;
+}
+
+.trustus__wrapper .slick-dots li.slick-active button:before {
+    opacity: 1;
+}
+
+.trustus__wrapper .slick-prev,
+.trustus__wrapper .slick-next {
+    z-index: 1;
+    width: 45px;
+    height: 45px;
+    background: var(--primary-color);
+    border-radius: 50%;
+    opacity: 0.8;
+    transition: opacity 0.3s ease;
+}
+
+.trustus__wrapper .slick-prev:hover,
+.trustus__wrapper .slick-next:hover {
+    opacity: 1;
+}
+
+.trustus__wrapper .slick-prev:before,
+.trustus__wrapper .slick-next:before {
+    color: white;
+    font-size: 18px;
+}
+
+.trustus__wrapper .slick-prev { left: -60px; }
+.trustus__wrapper .slick-next { right: -60px; }
+
+.light-theme .trustus__item {
+    background: var(--testimonial-bg);
+    box-shadow: 0 5px 20px rgb(0 0 0 / 0.08);
+}
+
+.light-theme .trustus__item:hover {
+    box-shadow: 0 15px 40px rgb(55 156 246 / 0.15);
+}
+
+.light-theme .client__logo {
+    background: #f8f9fa;
+    border: 1px solid #e9ecef;
+}
+
+@media (max-width: 1200px) {
+    .trustus__wrapper .slick-prev { left: -40px; }
+    .trustus__wrapper .slick-next { right: -40px; }
+}
+
+@media (max-width: 992px) {
+    .trustus_content_top h2 { font-size: 1.8rem; }
+    .trustus__wrapper { width: 95%; }
+    
+    .trustus__wrapper .slick-prev,
+    .trustus__wrapper .slick-next {
+        width: 40px;
+        height: 40px;
+        &.slick-prev { left: -25px; }
+        &.slick-next { right: -25px; }
+    }
+}
+
+@media (max-width: 768px) {
+    .trustus__wrapper {
+        width: 100%;
+        .slick-slide { padding: 0 10px; }
+        .slick-prev,
+        .slick-next { display: none !important; }
+    }
+    
+    .trustus__item { padding: 30px 15px; }
+    
+    .client__logo {
+        width: 100px;
+        height: 70px;
+        margin-bottom: 20px;
+    }
+    
+    .client__name { font-size: 1rem; }
+}
+
+@media (max-width: 480px) {
+    .trustus_content_top h2 { font-size: 1.3rem; }
+    .trustus__wrapper .slick-slide { padding: 0 8px; }
+    .trustus__item { padding: 25px 10px; }
+    
+    .client__logo {
+        width: 90px;
+        height: 60px;
+    }
+}
