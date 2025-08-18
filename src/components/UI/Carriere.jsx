@@ -11,7 +11,6 @@ import {
   FileText, 
   Upload,
   CheckCircle,
-  Building,
   GraduationCap,
   Star,
   Calendar
@@ -171,16 +170,6 @@ const Carriere = () => {
     
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
-  };
-
-  // Convertit un fichier en base64 pour l'envoi par email
-  const fileToBase64 = (file) => {
-    return new Promise((resolve, reject) => {
-      const reader = new FileReader();
-      reader.readAsDataURL(file);
-      reader.onload = () => resolve(reader.result);
-      reader.onerror = error => reject(error);
-    });
   };
 
   // Gestion de la soumission du formulaire avec EmailJS
