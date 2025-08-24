@@ -10,7 +10,6 @@ import {
   Phone, 
   FileText, 
   Upload,
-  CheckCircle,
   GraduationCap,
   Star,
   Calendar
