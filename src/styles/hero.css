@@ -93,4 +93,8 @@
     .hero__wrapper{
         flex-direction: column;
     }
+
+    .hero__img{
+        margin-top: 2rem;
+    }
 }

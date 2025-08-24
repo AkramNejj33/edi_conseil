@@ -51,7 +51,7 @@ const Carriere = () => {
   const availablePositions = [
     {
       id: 1,
-      title: "Consultant Junior EDI",
+      title: "Consultant Junior EDI (recrutement non encore ouvert)",
       type: "CDI",
       location: "Paris",
       startDate: "2026",
@@ -181,9 +181,9 @@ const Carriere = () => {
       
       try {
         // Configuration EmailJS
-        const serviceID = 'service_51oo08n'; // À remplacer
-        const templateID = 'template_recruitment'; // À créer dans EmailJS
-        const userID = 'r9nQCNNF8LNC5ieDS'; // À remplacer
+        const serviceID = 'service_51oo08n';
+        const templateID = 'template_recruitment';
+        const userID = 'r9nQCNNF8LNC5ieDS';
 
         // Préparation des informations sur les fichiers
         let filesInfo = '';
@@ -193,49 +193,46 @@ const Carriere = () => {
         if (!filesInfo) filesInfo = 'Aucun fichier joint';
 
         const templateParams = {
-          // Informations personnelles
           candidate_name: formData.fullName,
           candidate_email: formData.email,
           candidate_phone: formData.phone,
-          
-          // Candidature
           position_applied: formData.position,
           experience_level: formData.experience || 'Non spécifiée',
           education_level: formData.education || 'Non spécifiée',
           availability: formData.availability || 'Non spécifiée',
-          
-          // Motivation
           motivation_letter: formData.motivation,
-          
-          // Fichiers (informations seulement - EmailJS ne supporte pas les fichiers binaires)
           files_info: filesInfo,
-          
-          // Métadonnées
           application_date: new Date().toLocaleDateString('fr-FR'),
           application_time: new Date().toLocaleTimeString('fr-FR'),
-          
-          // Email de destination
-          to_email: 'akramnejjari726@gmail.com'
+          to_email: 'mnejjari@ediconseil.net'
         };
 
         await emailjs.send(serviceID, templateID, templateParams, userID);
         
-        // Affichage du message de succès
-        setShowSuccess(true);
+        alert(`⚠️ INFORMATION IMPORTANTE
+
+Actuellement, EDI Consulting ne procède à aucun recrutement. 
+
+Votre candidature n'a pas été envoyée ni conservée dans notre système.
+
+📧 Pour rester informé(e) :
+• Suivez nos actualités pour connaître les futures opportunités
+• Vous pourrez postuler lorsque de nouveaux postes seront ouverts
+
+Merci de votre compréhension et de votre intérêt pour EDI Consulting !`);
         
-        // Reset du formulaire après 3 secondes
+        // Reset du formulaire après 2 secondes
         setTimeout(() => {
-          setShowSuccess(false);
           setFormData({
             fullName: '', email: '', phone: '', position: '',
             experience: '', education: '', motivation: '', availability: ''
           });
           setFiles({ cv: null, coverLetter: null, portfolio: null });
-        }, 3000);
+        }, 2000);
         
       } catch (error) {
         console.error('Erreur lors de l\'envoi:', error);
-        alert('Erreur lors de l\'envoi de la candidature. Veuillez réessayer ou nous contacter directement.');
+        alert('⚠️ Actuellement aucun recrutement n\'est en cours.\n\nVotre candidature n\'a pas été traitée.\n\nMerci de réessayer ultérieurement lorsque de nouveaux postes seront ouverts.');
       } finally {
         setIsLoading(false);
       }

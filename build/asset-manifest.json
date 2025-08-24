@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/static/css/main.b7f0603c.css",
-    "main.js": "/static/js/main.2c32b7a8.js",
+    "main.css": "/static/css/main.92973a29.css",
+    "main.js": "/static/js/main.fd4f21f6.js",
     "static/media/les-mains-avec-un-ordinateur-portable-et-la-carte-du-monde-virtuel.jpg": "/static/media/les-mains-avec-un-ordinateur-portable-et-la-carte-du-monde-virtuel.2eb945d7b629aa38c7af.jpg",
     "static/media/remixicon.svg?t=1734404658139": "/static/media/remixicon.df9902a6df13645438e1.svg",
     "static/media/about-us.jpg": "/static/media/about-us.9446fb0339368a482c2c.jpg",
@@ -22,11 +22,11 @@
     "static/media/slick.ttf": "/static/media/slick.c94f7671dcc99dce43e2.ttf",
     "static/media/slick.woff": "/static/media/slick.295183786cd8a1389865.woff",
     "index.html": "/index.html",
-    "main.b7f0603c.css.map": "/static/css/main.b7f0603c.css.map",
-    "main.2c32b7a8.js.map": "/static/js/main.2c32b7a8.js.map"
+    "main.92973a29.css.map": "/static/css/main.92973a29.css.map",
+    "main.fd4f21f6.js.map": "/static/js/main.fd4f21f6.js.map"
   },
   "entrypoints": [
-    "static/css/main.b7f0603c.css",
-    "static/js/main.2c32b7a8.js"
+    "static/css/main.92973a29.css",
+    "static/js/main.fd4f21f6.js"
   ]
 }

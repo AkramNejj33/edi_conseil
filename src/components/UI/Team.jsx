@@ -44,7 +44,7 @@ const Team = () => {
               </span>
               <span>
                 <a
-                  href="mailto:contact@ediconseil.net"
+                  href="mailto:mnejjari@ediconseil.net"
                 >
                   <i className="ri-mail-line"></i>
                 </a>

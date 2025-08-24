@@ -7,12 +7,12 @@ const chooseData = [
   {
     icon: "ri-wifi-line",
     title: "Expertise technique pointue",
-    desc: "Plus de 10 ans d'expérience sur les solutions EDI et Middleware : TradeXpress, OpenText, Generix, IBM Sterling, etc.",
+    desc: "Plus de 10 ans d'expérience sur les solutions EDI et Middleware : TradeXpress, OpenText, Solutions Maison , IBM Sterling, etc.",
   },
   {
     icon: "ri-team-line",
     title: "Accompagnement personnalisé",
-    desc: "Nous intervenons auprès des PME, ETI et grands groupes avec des solutions adaptées à chaque contexte métier.",
+    desc: "Nous intervenons auprès des PME et grands groupes avec des solutions adaptées à chaque contexte métier.",
   },
   {
     icon: "ri-customer-service-2-line",

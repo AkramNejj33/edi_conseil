@@ -34,7 +34,7 @@ const Contact = () => {
         from_email: formData.email,
         subject: formData.subject,
         message: formData.message,
-        to_email: 'akramnejjari726@gmail.com'
+        to_email: 'mnejjari@ediconseil.net'
       };
 
       await emailjs.send(serviceID, templateID, templateParams, userID);
@@ -65,7 +65,7 @@ const Contact = () => {
           <p className="subtitle">Venez nous rencontrer</p>
           <div className="map-container">
             <iframe
-              src="https://www.google.com/maps?q=69+Rue+Brillat-Savarin+75013+Paris&output=embed"
+              src="https://www.google.com/maps?q=Le+Magellan+7+Rue+Montespan+91000+Évry-Courcouronnes&output=embed"
               width="100%"
               height="400"
               style={{ border: 0 }}
@@ -77,9 +77,9 @@ const Contact = () => {
             <div className="map-overlay">
               <div className="map-info">
                 <h3>Visitez notre bureau</h3>
-                <p>69 Rue Brillat-Savarin, Lot 106<br />75013 Paris, France</p>
+                <p>Le Magellan<br />7 Rue Montespan<br />91000 Évry-Courcouronnes, France</p>
                 <a
-                  href="https://maps.google.com/?q=69+Rue+Brillat-Savarin+75013+Paris"
+                  href="https://maps.google.com/?q=Le+Magellan+7+Rue+Montespan+91000+Évry-Courcouronnes"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="btn-map"
@@ -108,7 +108,7 @@ const Contact = () => {
                 </div>
                 <div className="contact-text">
                   <h4>Adresse</h4>
-                  <p>69 Rue Brillat-Savarin, Lot 106<br />75013 Paris, France</p>
+                  <p>Le Magellan<br />7 Rue Montespan<br />91000 Évry-Courcouronnes, France</p>
                 </div>
               </div>
 
@@ -128,7 +128,7 @@ const Contact = () => {
                 </div>
                 <div className="contact-text">
                   <h4>Email</h4>
-                  <p>contact@ediconseil.net</p>
+                  <p>mnejjari@ediconseil.net</p>
                 </div>
               </div>
 

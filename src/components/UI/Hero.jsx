@@ -3,6 +3,7 @@ import "../../styles/hero.css";
 import heroDarkImg from "../../images/hero-img.jpg";
 
 import lightImg from "../../images/les-mains-avec-un-ordinateur-portable-et-la-carte-du-monde-virtuel.jpg";
+import { AlignCenter } from "lucide-react";
 
 const Hero = ({ theme }) => {
   return (
@@ -11,15 +12,15 @@ const Hero = ({ theme }) => {
         <div className="hero__wrapper">
           <div className="hero__content">
             <div>
-              <h2>Nous transformons vos</h2>
-              <h2>échanges de données</h2>
-              <h2 className="highlight">avec expertise et agilité</h2>
+              <h2>Nous transformons</h2>
+              <h2>vos données</h2>
+              <h2 className="highlight">avec expertise</h2>
             </div>
             <p className="description">
-              E-D-I CONSEIL est votre expert en EDI et Middleware. Nous vous
+              E-D-I CONSEIL est votre expert Middleware spécialisé en EDI. Nous vous
               accompagnons dans l’audit, la migration, la mise en conformité, le
               support et la formation. Avec plus de 10 ans d’expérience, nous
-              assurons la réussite de votre transformation numérique.
+              assurons la réussite de votre transformation numérique et nous proposons des profils adaptés à vos besoins.
             </p>
 
             <div className="hero__btns">

@@ -120,7 +120,7 @@ const Appointment = () => {
           client_requirements: formData.requirements || 'Aucun besoin spécifique mentionné',
           
           // Email de destination
-          to_email: 'akramnejjari726@gmail.com'
+          to_email: 'mnejjari@ediconseil.net'
         };
 
         await emailjs.send(serviceID, templateID, templateParams, userID);
