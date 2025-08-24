@@ -42,7 +42,6 @@ const Carriere = () => {
   });
   
   // État pour l'affichage des messages
-  const [showSuccess, setShowSuccess] = useState(false);
   const [errors, setErrors] = useState({});
   const [isLoading, setIsLoading] = useState(false);
 
@@ -253,17 +252,6 @@ Merci de votre compréhension et de votre intérêt pour EDI Consulting !`);
             de l'intégration des données électroniques.
           </p>
         </div>
-
-        {/* ============ MESSAGE DE SUCCÈS ============ */}
-        {showSuccess && (
-          <div className="success-message">
-            <CheckCircle size={24} />
-            <div>
-              <h3>Candidature envoyée avec succès !</h3>
-              <p>Nous avons bien reçu votre candidature. Notre équipe RH vous contactera sous peu.</p>
-            </div>
-          </div>
-        )}
 
         <div className="carriere-content">
           

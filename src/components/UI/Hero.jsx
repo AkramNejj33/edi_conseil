@@ -1,9 +1,7 @@
 import React from "react";
 import "../../styles/hero.css";
 import heroDarkImg from "../../images/hero-img.jpg";
-
 import lightImg from "../../images/les-mains-avec-un-ordinateur-portable-et-la-carte-du-monde-virtuel.jpg";
-import { AlignCenter } from "lucide-react";
 
 const Hero = ({ theme }) => {
   return (
