@@ -8,7 +8,6 @@ const Team = () => {
     <section id="apropos">
       <div className="container">
         <div className="team__content">
-          <h6 className="subtitle">À propos du consultant</h6>
           <h2>
             Rencontrez votre <span className="highlight">expert EDI</span>
           </h2>

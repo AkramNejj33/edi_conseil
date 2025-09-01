@@ -71,11 +71,24 @@ const Header = ({ theme, toggleTheme }) => {
 
   const toggleMenu = ()=> menuRef.current.classList.toggle('menu__active');
 
+  const handleLogoClick = (e) => {
+    e.preventDefault();
+    if (location.pathname === "/" || location.pathname === "") {
+      window.scrollTo({
+        left: 0,
+        top: 0,
+        behavior: 'smooth'
+      });
+    } else {
+      window.location.href = '/';
+    }
+  };
+
   return (
     <header className="header" ref={headerRef}>
       <div className="container">
         <div className="nav__wrapper">
-          <div className="logo">
+          <div className="logo" onClick={handleLogoClick} style={{cursor: 'pointer'}}>
             <h2>E-D-I CONSEIL</h2>
           </div>
 
